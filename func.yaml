@@ -4,8 +4,9 @@ runtime: go
 registry: ""
 image: ""
 created: 2023-06-18T13:44:58.599533+02:00
-build:
-  buildpacks:
-  - paketo-buildpacks/go-dist
-  - ghcr.io/boson-project/go-function-buildpack:tip
-  pvcSize: 256Mi
+build: git                                          # required, specify `git` build type
+git:
+  url: https://github.com/darthkali/tekton-knative-function   # required, git repository with the function source code
+  revision: main                                    # optional, git revision to be used (branch, tag, commit)
+    # contextDir: myfunction                          # optional, needed only if the function is not located
+  # in the repository root folder
